@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Detection App</title>
+    <!-- Use Flask's url_for to load CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      /* Make navbar fixed at top without changing your existing styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.85
+        ); /* semi-transparent to match your design */
+      }
+
+      /* Ensure content below header is not hidden */
+      body {
+        padding-top: 150px; /* adjust based on header height */
+      }
+
+      /* Optional: scroll-padding for anchor links */
+      html {
+        scroll-padding-top: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1 class="welcome-heading">
+        ECG Based Heart Attack Classification Using Winogard
+      </h1>
+      <nav>
+        <ul class="navbar">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('pred') }}">Prediction</a></li>
+          <li><a href="{{ url_for('perf') }}">Performance</a></li>
+          <li><a href="{{ url_for('chart') }}">Chart</a></li>
+          <li>
+            <a
+              href="{{ url_for('logout') }}"
+              style="color: #e7508f; font-weight: bold"
+              >Sign Out</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <br />
+    <br />
+    <!-- Upload ECG Section -->
+    <section id="UploadECG" class="upload-ecg-section">
+      <h2>Upload ECG</h2>
+      <p style="text-align: center">
+        1️⃣ Upload an ECG image with dimensions 2500 × 1500 pixels. <br />
+        2️⃣ Our AI model analyzes image using deep learning algorithms. <br />
+        3️⃣ You receive a clear report on your heart health. Fast and easy!
+      </p>
+
+      <p>
+        Upload your ECG image here and get instant feedback on your heart
+        condition. Our platform ensures your data is safe and your results are
+        accurate.
+      </p>
+      <form
+        id="ecgUploadForm"
+        method="POST"
+        enctype="multipart/form-data"
+        action="/predict"
+      >
+        <label for="ecgFile" class="custom-file-upload"> Choose File </label>
+        <input
+          type="file"
+          id="ecgFile"
+          name="ecgFile"
+          accept="image/*"
+          required
+        />
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+      <small class="file-note"
+        >Supported formats: JPG, PNG. Max size: 5MB.</small
+      >
+    </section>
+
+    <!-- JS for smooth scroll and cards -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              e.preventDefault();
+              targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+
+        // Make all cards toggleable
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            card.classList.toggle("open");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

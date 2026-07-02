@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - Heart Disease Detection App</title>
+
+    <style>
+      /* Keep all your existing CSS as it is */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: url("https://res.cloudinary.com/dsvrimczh/image/upload/v1748947853/bg_xcwpue.jpg")
+          no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #fff;
+      }
+      h1 {
+        text-align: center;
+      }
+      .topnav {
+        background-color: #1f4666dc;
+        position: fixed; /* or sticky */
+
+        width: 100%; /* ensures it spans the full width */
+        top: 0;
+      }
+
+      .login-container {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 2.5rem 3rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(231, 80, 143, 0.6);
+        width: 320px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(90deg, #e7508f, #288da7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin: 0.8rem 0 0.3rem 0;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        padding: 0.6rem 0.8rem;
+        border-radius: 6px;
+        border: none;
+        font-size: 1rem;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        outline: none;
+        box-shadow: 0 0 8px #e7508f;
+      }
+
+      button {
+        margin-top: 1.8rem;
+        padding: 0.75rem 0;
+        background: #288da7;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(40, 141, 167, 0.6);
+        transition:
+          background-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      button:hover {
+        background: #e7508f;
+        transform: translateY(-3px);
+      }
+
+      .login-link {
+        margin-top: 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .login-link a {
+        color: #e7508f;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        background: #ff4c4c;
+        padding: 0.8rem;
+        margin-top: 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topnav">
+      <h1>ECG Based Heart Attack Classification Using Winogard</h1>
+    </div>
+    <br />
+    <div class="login-container">
+      <h2>Sign Up</h2>
+      <form method="POST" action="{{ url_for('register') }}">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Create a password"
+          required
+        />
+
+        <label for="confirm_password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          placeholder="Confirm your password"
+          required
+        />
+
+        <button type="submit">Register</button>
+      </form>
+
+      {% if error %}
+      <div class="error-message">{{ error }}</div>
+      {% endif %}
+
+      <p class="login-link">
+        Already have an account?
+        <a href="{{ url_for('login_page') }}">Sign In</a>
+      </p>
+    </div>
+  </body>
+</html>

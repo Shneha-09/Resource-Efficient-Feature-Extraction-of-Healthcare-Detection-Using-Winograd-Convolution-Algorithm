@@ -1,0 +1,13 @@
+# Large files
+winoecg.h5
+*.mp4
+
+# Database
+users.db
+
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/

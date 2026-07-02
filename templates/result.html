@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prediction Result</title>
+
+<style>
+  /* General Styling */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://res.cloudinary.com/dsvrimczh/image/upload/v1748947853/bg_xcwpue.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+
+  .welcome-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #e7508f, #288da7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 3rem 0 2rem 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    background-color: black;
+    border-top: 2px solid #e7508f; /* pink border top */
+    border-bottom: 2px solid #e7508f; /* pink border bottom */
+  }
+
+  .navbar li {
+    margin: 0 15px;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 5px;
+    border: none;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+
+  .navbar a:hover {
+    color: #e7508f;
+    border-bottom: 2px solid #288da7; /* blue underline on hover */
+  }
+
+  /* Remove blue outline from navbar links */
+  .navbar a:focus {
+    outline: none;
+  }
+
+  /* Container with prediction result */
+  .container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(231, 80, 143, 0.4);
+    text-align: center;
+    width: 350px;
+    color: #fff;
+    margin: 3rem auto;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #e7508f, #288da7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ddd;
+  }
+
+  strong {
+    color: #e7508f;
+    font-weight: 700;
+  }
+
+  a.button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #288da7;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(40, 141, 167, 0.6);
+  }
+
+  a.button:hover {
+    background-color: #e7508f;
+    transform: translateY(-3px);
+  }
+
+  /* Remove blue outline from all buttons and links */
+  a:focus,
+  button:focus {
+    outline: none;
+  }
+</style>
+
+</head>
+<body>
+ <body>
+    <!-- Header -->
+    <header>
+      <h1 class="welcome-heading">
+        ECG Based Heart Attack Classification Using Winogard
+      </h1>
+      <nav>
+        <ul class="navbar">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('pred') }}">Prediction</a></li>
+          <li><a href="{{ url_for('perf') }}">Performance</a></li>
+          <li><a href="{{ url_for('chart') }}">Chart</a></li>
+          <li>
+            <a
+              href="{{ url_for('logout') }}"
+              style="color: #e7508f; font-weight: bold"
+              >Sign Out</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <br />
+    <br />
+ 
+
+  <div class="container">
+    <h2>Prediction Result</h2>
+    <p>The model predicted: <strong>{{ prediction }}</strong></p>
+  </div>
+</body>
+</html>
