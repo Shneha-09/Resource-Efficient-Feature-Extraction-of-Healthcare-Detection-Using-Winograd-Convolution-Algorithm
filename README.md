@@ -1,0 +1,1 @@
+# Resource-Efficient-Feature-Extraction-of-Healthcare-Detection-Using-Winograd-Convolution-Algorithm
