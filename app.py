@@ -4,7 +4,6 @@ import numpy as np
 import os
 import joblib
 import sqlite3
-import gdown
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import tensorflow as tf
@@ -20,14 +19,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # model_path = os.path.join(BASE_DIR, "ecg_rf_model.pkl")
 # model = joblib.load(model_path)
 
-MODEL_PATH = "winoecg.h5"
+model = None
 
-if not os.path.exists(MODEL_PATH):
-    url = "https://drive.google.com/uc?id=1fqdU3ZV8y7M9o2NuvweJYuMLBVXM1IMG"
-    gdown.download(url, MODEL_PATH, quiet=False)
-
-model = load_model(MODEL_PATH)
-
+def get_model():
+    global model
+    if model is None:
+        from tensorflow.keras.models import load_model
+        model = load_model("winoecg.h5")
+    return model
 categories = ['Abnormal_Heartbeat', 'History_of_MI', 'Myocardial_Infarction', 'Normal']
 
 verbose_name = {
