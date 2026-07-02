@@ -5,7 +5,7 @@
 AI-powered medical image diagnosis system using CNN and Winograd optimization.
 
 ## 🚀 Live Demo
-https://your-app.onrender.com
+(https://the-healthcare-detection-using-winograd.onrender.com/)
 
 ## ⚙️ Tech Stack
 - Python
